@@ -1,0 +1,6 @@
+*.swp
+*.o
+*.out
+*_gtable.cpp
+bin
+

@@ -1,0 +1,3 @@
+[submodule "bytemap"]
+	path = bytemap
+	url = https://github.com/tgckpg/bytemap.git
