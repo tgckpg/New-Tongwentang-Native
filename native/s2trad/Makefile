@@ -7,11 +7,14 @@ all: $(OBJS:.o=.cpp)
 	$(CC) $(CCFLAGS) -o $(OUT) $(OBJS:.o=.cpp)
 
 clean:
-	rm $(OUT) $(OBJS)
+	rm $(OUT) tests/*.out
+#	rm $(OUT) $(OBJS) tests/*.out
 
 TEST_INPUT = $(wildcard tests/*.in)
 
 .PHONY: test
-test: $(TEST_INPUT:.in=.exp)
-	$(OUT) $(TEST_INPUT) > $(TEST_INPUT:.in=.out)
-	diff $(TEST_INPUT:.in=.exp) $(TEST_INPUT:.in=.out)
+test: $(TEST_INPUT:.in=.out)
+
+tests/%.out: tests/%.in tests/%.exp $(OUT)
+	$(OUT) $< > $@
+	diff $@ $(word 2, $?)
