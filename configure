@@ -1,3 +1,3 @@
 #!/bin/bash
-php codegen/s2trad/mkcstable.php
-php codegen/t2simp/mkcstable.php
+php codegen/s2trad/gencode.php
+php codegen/t2simp/gencode.php
