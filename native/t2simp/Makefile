@@ -1,7 +1,7 @@
 CC=g++
 CCFLAGS=-O3
 OBJS=main.o wconv_gtable.o shared/Utf8Byte.o
-OUT=bin/s2trad
+OUT=bin/t2simp
 
 all: $(OBJS:.o=.cpp)
 	$(CC) $(CCFLAGS) -o $(OUT) $(OBJS:.o=.cpp)

@@ -1,9 +1,18 @@
-BINS=native/s2trad
-all: $(BINS)
-	$(MAKE) -C $(BINS) $@
+BINS=native/s2trad native/t2simp
+all:
+	@for dir in $(BINS); \
+	do \
+		$(MAKE) -C $${dir} $@ || exit $$?; \
+	done
 
 clean:
-	$(MAKE) -C $(BINS) clean
+	@for dir in $(BINS); \
+	do \
+		$(MAKE) -C $${dir} $@ clean || exit $$?; \
+	done
 
 test:
-	$(MAKE) -C $(BINS) test
+	@for dir in $(BINS); \
+	do \
+		$(MAKE) -C $${dir} $@ test || exit $$?; \
+	done
