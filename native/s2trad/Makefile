@@ -1,5 +1,5 @@
 CC=g++
-CCFLAGS=-O3
+CCFLAGS=-Ofast
 OBJS=main.o wconv_gtable.o shared/Utf8Byte.o
 OUT=bin/s2trad
 
@@ -16,5 +16,6 @@ TEST_INPUT = $(wildcard tests/*.in)
 test: $(TEST_INPUT:.in=.out)
 
 tests/%.out: tests/%.in tests/%.exp $(OUT)
+	@echo
 	$(OUT) $< > $@
 	diff $@ $(word 2, $?)
