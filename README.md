@@ -1,5 +1,6 @@
 # 新同文堂 Native [![Build Status](https://travis-ci.org/tgckpg/New-Tongwentang-Native.svg?branch=master)](https://travis-ci.org/tgckpg/New-Tongwentang-Native)
-這是新同文堂 Native ( 對照表直接取自新同文堂 web )
+這是新同文堂 Native ( 對照表基於自 [新同文堂 Chrome](https://github.com/softcup/New-Tongwentang-for-Web) ，外另修正了幾個錯誤 )
+
 
 ### Native 有什麼用？
 當然就是可以轉換得比較快吧，順便我想學習怎麼用 travis-ci 和寫 make file。不過主要自的是想整合 CI ，因為我喜歡新同文堂的轉換概念，而且轉換這種東西挺適合用 CI 測試呢。
