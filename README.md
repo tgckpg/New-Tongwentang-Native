@@ -1,5 +1,5 @@
 # 新同文堂 Native [![Build Status](https://travis-ci.org/tgckpg/New-Tongwentang-Native.svg?branch=master)](https://travis-ci.org/tgckpg/New-Tongwentang-Native)
-這是新同文堂 Native ( 對照表基於自 [新同文堂 Chrome](https://github.com/softcup/New-Tongwentang-for-Web) ，外另修正了幾個錯誤 )
+這是新同文堂 Native ( 對照表基於 [新同文堂 Chrome](https://github.com/softcup/New-Tongwentang-for-Chrome) ，另外修正了幾個 [錯誤](https://github.com/tgckpg/New-Tongwentang-Native/tree/master/native/s2trad/tests) )
 
 
 ### Native 有什麼用？
