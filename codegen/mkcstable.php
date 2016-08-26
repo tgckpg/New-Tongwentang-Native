@@ -26,7 +26,7 @@ $LogLine = function ($string)
 
 set_error_handler("myErrorHandler");
 
-require_once __DIR__ . "/../bytemap/codegen/ByteMap.php";
+require_once __DIR__ . "/../bytemap/php/ByteMap.php";
 
 ///// C++  
 //  void match_p_byte{X}(unsigned char const* str, int start, char const* &out, int &step_size)
