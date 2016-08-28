@@ -14,3 +14,6 @@
 
 ### t2simp ( native/t2simp/bin/ )
 `t2simp <FILE> 繁 -> 簡`
+
+## Windows 版
+Windows library 請移步至 [libtranslate](https://github.com/tgckpg/libtranslate)
