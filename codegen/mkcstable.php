@@ -93,28 +93,31 @@ class STCompiler implements ByteMapCompiler
     }
 }
 
-
-function generate_match_function($byteX, $seq_num, $token)
+$byteX_match_function = function( $token, $seq_num )
 {
-	$byteX_match_function = <<< ___BYTEARR___
+    return <<< ___BYTEARR___
 
 void match_$token$seq_num(unsigned char const* str, int start, char const* &out, int &step_size)
 {
   step_size = 0;
 
 ___BYTEARR___;
-    global $LogLine;
+};
+
+$generate_match_function = function($byteX, $seq_num, $token)
+{
+    global $LogLine, $byteX_match_function;
     $bm = new ByteMap($LogLine);
     $bh = new STCompiler();
-    return $byteX_match_function
+    return $byteX_match_function( $token, $seq_num )
      . $bm->cascade($byteX)->compile(1, $bh)
      . "\n}";
-}
-
-
+};
 
 function get_function_group($file, $token)
 {
+    global $generate_match_function;
+
 	echo "Table file: $file\n";
 	$string = "";
 	$file = file($file, FILE_IGNORE_NEW_LINES);
@@ -161,17 +164,17 @@ function get_function_group($file, $token)
 	$wconv_table = "";
 	echo "Generating byte functions...\n";
 	echo "  byte6, Analyzing levels ...\n";
-	$wconv_table .= generate_match_function($byte6, "byte6", $token);
+	$wconv_table .= $generate_match_function( $byte6, "byte6", $token );
 	echo "  byte5, Analyzing levels ...\n";
-	$wconv_table .= generate_match_function($byte5, "byte5", $token);
+	$wconv_table .= $generate_match_function( $byte5, "byte5", $token );
 	echo "  byte4, Analyzing levels ...\n";
-	$wconv_table .= generate_match_function($byte4, "byte4", $token);
+	$wconv_table .= $generate_match_function( $byte4, "byte4", $token );
 	echo "  byte3, Analyzing levels ...\n";
-	$wconv_table .= generate_match_function($byte3, "byte3", $token);
+	$wconv_table .= $generate_match_function( $byte3, "byte3", $token );
 	echo "  byte2, Analyzing levels ...\n";
-	$wconv_table .= generate_match_function($byte2, "byte2", $token);
+	$wconv_table .= $generate_match_function( $byte2, "byte2", $token );
 	echo "  ascii, Analyzing levels ...";
-	$wconv_table .= generate_match_function($ascii, "ascii", $token);
+	$wconv_table .= $generate_match_function( $ascii, "ascii", $token );
 	echo " done\n";
 
 	return $wconv_table;
