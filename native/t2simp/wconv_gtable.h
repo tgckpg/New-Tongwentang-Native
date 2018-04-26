@@ -1,1 +1,0 @@
-../s2trad/wconv_gtable.h

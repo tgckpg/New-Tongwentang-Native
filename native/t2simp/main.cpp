@@ -1,1 +1,0 @@
-../s2trad/main.cpp
