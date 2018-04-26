@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "ahocrsk.h"
 
 static inline void trim(std::string &s)
