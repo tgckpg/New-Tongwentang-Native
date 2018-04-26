@@ -1,13 +1,14 @@
-language: cpp
-sudo: required
 dist: trusty
-compiler:
-- gcc
-os:
-- linux
-before_install:
-- echo $LANG
-- echo $LC_ALL
+sudo: require
+language: cpp
+compiler: gcc
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-7
+      - g++-7
 branches:
   only:
   - master
@@ -15,5 +16,7 @@ branches:
 notifications:
   email: false
 env:
-  global:
-  - LANG="en_US.UTF-8"
+  - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7 && LANG=\"en_US.UTF-8\""
+before_install:
+  - eval "${MATRIX_EVAL}"
+  - $CXX --version
