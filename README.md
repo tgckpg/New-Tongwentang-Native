@@ -9,11 +9,11 @@
 
 沒有覺得 make test 很帥嗎？
 
-### s2trad ( native/s2trad/bin/ )
-`s2trad <FILE> 簡 -> 繁`
-
-### t2simp ( native/t2simp/bin/ )
-`t2simp <FILE> 繁 -> 簡`
+### ntr-tw ( bin/ )
+`ntr-tw <FILE>`
+這個指令會會當前目錄尋找並根據對照表轉換 ( 如沒有對照表，則直接輸出原文 )：
+ - `words.txt`
+ - `phrases.txt`
 
 ## Windows 版
 Windows library 請移步至 [libtranslate](https://github.com/tgckpg/libtranslate)

@@ -1,13 +1,5 @@
 #include "utils.h"
-
-static inline void trim(std::string &s) {
-    s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](int ch) {
-        return !std::isspace(ch);
-    }));
-    s.erase(std::find_if(s.rbegin(), s.rend(), [](int ch) {
-        return !std::isspace(ch);
-    }).base(), s.end());
-}
+#include "ahocrsk.h"
 
 std::vector<unsigned char> ReadAllBytes(char const* filename)
 {
@@ -28,20 +20,7 @@ std::tuple<int, int> ReadKVPairs(char const* filename, std::vector<std::string> 
 
     if ( infile.is_open() )
     {
-        while ( infile.good() )
-        {
-            char _s[256];
-            char _r[256];
-            if( infile.getline( _s, 256, ',' ) && infile.getline( _r, 256 ) )
-            {
-                std::string s( _s );
-                std::string r( _r );
-                trim( s ); trim( r );
-
-                search.push_back( s );
-                replace.push_back( r );
-            }
-        }
+        AhoCorasick::ParseTable( infile, search, replace );
     }
 
     infile.close();

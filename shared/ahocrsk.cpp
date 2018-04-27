@@ -102,13 +102,9 @@ std::stringstream AhoCorasick::replace(std::vector<unsigned char> &s, std::vecto
 		for (int k = 0; k < x->pats.size(); k++)
 		{
 			int index = x->pats[k];
-			/*
-			printf( "Found %d @%d, ", x->pats[k], i );
-			cout << "Replace: " << replace[ index ] << "\n";
-			*/
 
-			ss.seekp(-pat_lens[x->pats[k]], ss.cur);
-			ss << replace[index];
+			ss.seekp(-pat_lens[ index ], ss.cur);
+			ss << replace[ index ];
 			break;
 		}
 	}
