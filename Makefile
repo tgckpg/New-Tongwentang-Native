@@ -19,5 +19,12 @@ clean:
 test:
 	@for dir in $(TEST_DIRS); \
 	do \
+		rm $${dir}/.failed; \
 		$(MAKE) -C $${dir} $@ test || exit $$?; \
+	done
+	@for dir in $(TEST_DIRS); \
+	do \
+		if [ -f $${dir}/.failed ]; then \
+			 exit 1; \
+		fi; \
 	done
