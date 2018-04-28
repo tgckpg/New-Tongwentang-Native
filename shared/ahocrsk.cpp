@@ -4,10 +4,10 @@
 static inline void trim(std::string &s)
 {
 	s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](int ch) {
-		return !std::isspace(ch);
+		return !(ch == '\r' || ch == '\n');
 	}));
 	s.erase(std::find_if(s.rbegin(), s.rend(), [](int ch) {
-		return !std::isspace(ch);
+		return !(ch == '\r' || ch == '\n');
 	}).base(), s.end());
 }
 
@@ -99,6 +99,29 @@ std::stringstream AhoCorasick::replace(std::vector<unsigned char> &s, std::vecto
 	{
 		ss << s[i];
 		x = suffix(x, s[i]);
+		for (int k = 0; k < x->pats.size(); k++)
+		{
+			int index = x->pats[k];
+
+			ss.seekp(-pat_lens[ index ], ss.cur);
+			ss << replace[ index ];
+			break;
+		}
+	}
+
+	return ss;
+}
+
+std::stringstream AhoCorasick::replace(std::string s, std::vector<std::string> &replace)
+{
+	Node *x = trie;
+
+	std::stringstream ss;
+
+	for (long i = 0; i < s.size(); i++)
+	{
+		ss << s[i];
+		x = suffix(x, (unsigned char)s[i]);
 		for (int k = 0; k < x->pats.size(); k++)
 		{
 			int index = x->pats[k];

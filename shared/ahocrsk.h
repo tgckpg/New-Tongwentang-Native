@@ -39,5 +39,6 @@ public:
 	AhoCorasick();
 	AhoCorasick(std::vector<std::string> &p);
 	std::stringstream replace(std::vector<unsigned char> &s, std::vector<std::string> &replace);
+	std::stringstream replace(std::string s, std::vector<std::string> &replace);
 	static void ParseTable(std::istream &table, std::vector<std::string> &search, std::vector<std::string> &replace);
 };
